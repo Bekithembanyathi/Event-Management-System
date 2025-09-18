@@ -1,0 +1,15 @@
+{
+  "name": "event-management-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Event Management System",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "npm run start:dev",
+    "start": "node src/index.js",
+    "start:dev": "echo 'Backend development server - Add your framework-specific command here (e.g., nodemon src/index.js)'",
+    "build": "echo 'Backend build - Add your build process here if needed'",
+    "test": "echo 'Backend tests - Add your testing framework command here'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

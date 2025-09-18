@@ -1,0 +1,44 @@
+# Event Management System Configuration
+
+## Application Settings
+app:
+  name: "Event Management System"
+  version: "1.0.0"
+  environment: "development"
+
+## Server Configuration
+server:
+  port: 3000
+  host: "localhost"
+
+## Database Configuration
+database:
+  type: "postgresql"  # or mysql, sqlite, mongodb
+  host: "localhost"
+  port: 5432
+  name: "event_management"
+  
+## Security Settings
+security:
+  jwt:
+    expires_in: "24h"
+  bcrypt:
+    rounds: 12
+    
+## Features Configuration
+features:
+  email_notifications: true
+  payment_processing: true
+  calendar_integration: true
+  multi_language: false
+  
+## File Upload Settings
+upload:
+  max_file_size: "10MB"
+  allowed_types: ["image/jpeg", "image/png", "application/pdf"]
+  
+## External Services
+external_services:
+  email_service: "smtp"  # or sendgrid, mailgun
+  payment_gateway: "stripe"  # or paypal, square
+  maps_service: "google"  # or mapbox
