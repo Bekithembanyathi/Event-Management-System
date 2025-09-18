@@ -1,0 +1,56 @@
+/* Event Management System Custom Styles */
+
+.event-card {
+    transition: transform 0.2s;
+    border: 1px solid #dee2e6;
+}
+
+.event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.event-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.event-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.event-meta i {
+    width: 16px;
+    text-align: center;
+}
+
+.registration-count {
+    font-weight: 500;
+}
+
+.event-description {
+    line-height: 1.6;
+}

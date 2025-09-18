@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% if event.image %}
+        <img src="{{ event.image.url }}" class="img-fluid rounded mb-4" style="width: 100%; height: 300px; object-fit: cover;">
+        {% endif %}
+        
+        <h1>{{ event.title }}</h1>
+        <p class="lead">{{ event.description }}</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5><i class="fas fa-calendar text-primary me-2"></i>Date & Time</h5>
+                <p>{{ event.date|date:"F d, Y g:i A" }}</p>
+            </div>
+            <div class="col-md-6">
+                <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Location</h5>
+                <p>{{ event.location }}</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h5><i class="fas fa-user text-primary me-2"></i>Organizer</h5>
+                <p>{{ event.organizer.username }}</p>
+            </div>
+            <div class="col-md-6">
+                <h5><i class="fas fa-users text-primary me-2"></i>Capacity</h5>
+                <p>{{ event.registrations.count }} / {{ event.max_attendees }} registered</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Event Registration</h5>
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    {% if event.is_full %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>This event is full!
+                        </div>
+                    {% elif is_registered %}
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>You are registered for this event!
+                        </div>
+                        <a href="{% url 'unregister_from_event' event.pk %}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-times me-2"></i>Unregister
+                        </a>
+                    {% else %}
+                        <p class="text-muted">{{ event.available_spots }} spots remaining</p>
+                        <a href="{% url 'register_for_event' event.pk %}" class="btn btn-success">
+                            <i class="fas fa-user-plus me-2"></i>Register Now
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>Please login to register for this event.
+                    </div>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-primary">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% if event.registrations.exists %}
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="mb-0">Registered Attendees ({{ event.registrations.count }})</h6>
+            </div>
+            <div class="card-body">
+                {% for registration in event.registrations.all|slice:":5" %}
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-user-circle text-muted me-2"></i>
+                        <span>{{ registration.user.username }}</span>
+                    </div>
+                {% endfor %}
+                {% if event.registrations.count > 5 %}
+                    <small class="text-muted">and {{ event.registrations.count|add:"-5" }} more...</small>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'event_list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to Events
+    </a>
+</div>
+{% endblock %}
