@@ -1,0 +1,13 @@
+{
+  "name": "event-management-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Event Management System",
+  "scripts": {
+    "dev": "npm run start",
+    "start": "echo 'Frontend development server - Add your framework-specific command here'",
+    "build": "echo 'Frontend build - Add your framework-specific build command here'",
+    "test": "echo 'Frontend tests - Add your testing framework command here'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-json",
+    "bradlc.vscode-tailwindcss",
+    "ms-python.python",
+    "ms-dotnettools.csharp",
+    "redhat.java",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
+    "ms-vscode.vscode-json"
+  ]
+}
